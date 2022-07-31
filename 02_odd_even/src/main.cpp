@@ -43,15 +43,13 @@ int main(int argc, char* argv[])
 		const char* argumentAsCharArray = argumentAsString.c_str();
 
 		char* end;
-		number = strtol(argumentAsCharArray, &end, 10);
+		number = strtol(argumentAsCharArray, &end, 10); //parsing the argument to long int
 
-		if (end == argumentAsCharArray)
-			printf("NAN");
+		if (end == argumentAsCharArray) //check if input contains only characters in it
+			printf("NAN"); //print nan if the input didn't contain numbers
 
 		else
-			printOddOrEven(number);
-		
-
+			printOddOrEven(number); //print the parsed number
 
 	}
 	//number = argv[1]; // No
