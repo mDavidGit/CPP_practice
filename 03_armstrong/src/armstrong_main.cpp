@@ -3,8 +3,20 @@
 bool isArmstrongNumber(int number)
 {
 	// TODO: implement some functionality to see if this number is an armstrong number
+	int sum = 0; 
+	int argument = number; //make a copy of the input
 
-	return false;
+	while (argument != 0)
+	{
+		sum = sum + (pow(argument % 10, 3)); //calculating and summing the cube of each digit the number is composed of
+		argument /= 10; //discard the digit that we calculated the cube for
+	}
+
+	if (sum == number) 
+		return true; //if the sum of cubes is equal to the input return true
+	
+	else
+		return false;
 }
 
 void printIsArmstrong(int number)
@@ -52,7 +64,16 @@ int main(int argc, char *argv[])
 	std::string argumentAsString = argv[1];
 	
 	// TODO: read number / cast to integer
+	char* end;
+	const char* argumentAsCharArray = argumentAsString.c_str();
+	readNumber = strtol(argumentAsCharArray, &end, 10); //casting the input to long int
+	
 
-	printIsArmstrong(readNumber);
+	if (end != argumentAsCharArray)
+		printIsArmstrong(readNumber);
+
+	else
+		std::cout << "Invalid input" << std::endl; //check if the input is a valid number
+
 	return 0;
 }
